@@ -1,61 +1,106 @@
 import java.awt.*; 
 import javax.swing.*; 
 import java.awt.event.*;
-public class textEditor {
+public class textEditor implements ActionListener {
+     // menubar
+    static JMenuBar mb;
+ 
+    // JMenu
+    static JMenu fileM, editM, formatM, x1;
+
+    // Menu items
+    static JMenuItem fileNew, fileOpen, fileSave, fileSaveAs, s1, s2,
+    editUndo, editCut, editCopy, editPaste,
+    formatFont, formatWordWrap, formatFontSize;
+
+    // create a frame
+    static JFrame f;
+
+    // a label
+    static JLabel l;
     public static void main(String args[]) {
         createWindow();
     }
     private static void createWindow() {
-        // make frame 
-        JFrame frame = new JFrame();    
-        frame.setSize(400,400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Text Editor");
-        frame.setVisible(true);
-        // create menu bar
-        final JMenuBar menuBar = new JMenuBar();
-        // create menus
-        JMenu fileMenu = new JMenu("File");
-        JMenu editMenu = new JMenu("Edit");
-        JMenu formatMenu = new JMenu("Format");
-        // create menu items
-        JMenuItem newMenuItem = new JMenuItem("New");
-        //newMenuItem.setMnemonic(KeyEvent.VK_N);
-        newMenuItem.setActionCommand("New");
-
-        JMenuItem openMenuItem = new JMenuItem("Open");
-        openMenuItem.setActionCommand("Open");
-
-        JMenuItem saveMenuItem = new JMenuItem("Save");
-        saveMenuItem.setActionCommand("Save");
-
-        JMenuItem exitMenuItem = new JMenuItem("Exit");
-        exitMenuItem.setActionCommand("Exit");
-
-        JMenuItem cutMenuItem = new JMenuItem("Cut");
-        cutMenuItem.setActionCommand("Cut");
-
-        JMenuItem copyMenuItem = new JMenuItem("Copy");
-        copyMenuItem.setActionCommand("Copy");
-
-        JMenuItem pasteMenuItem = new JMenuItem("Paste");
-        pasteMenuItem.setActionCommand("Paste");
-
-        MenuItemListener menuItemListener = new MenuItemListener();
-
-        newMenuItem.addActionListener(menuItemListener);
-        openMenuItem.addActionListener(menuItemListener);
-        saveMenuItem.addActionListener(menuItemListener);
-        exitMenuItem.addActionListener(menuItemListener);
-        cutMenuItem.addActionListener(menuItemListener);
-        copyMenuItem.addActionListener(menuItemListener);
-        pasteMenuItem.addActionListener(menuItemListener);
-
-    }
-    class MenuItemListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {            
-           statusLabel.setText(e.getActionCommand() + " JMenuItem clicked.");
-        }    
+         // create an object of the class
+         textEditor te = new textEditor();
+ 
+         // create a frame
+         f = new JFrame("Menu demo");
+  
+         // create a label
+         l = new JLabel("no task ");
+  
+         // create a menubar
+         mb = new JMenuBar();
+  
+         // create a menu
+         fileM = new JMenu("File");
+         editM = new JMenu("Edit");
+         formatM = new JMenu("Format");
+         x1 = new JMenu("submenu");
+  
+         // create menuitems
+         fileNew = new JMenuItem("New");
+         fileOpen = new JMenuItem("Open");
+         fileSave = new JMenuItem("Save");
+         fileSaveAs = new JMenuItem("Save As");
+         editUndo = new JMenuItem("Undo");
+         editCut = new JMenuItem("Cut");
+         editCopy = new JMenuItem("Copy");
+         editPaste = new JMenuItem("Paste");
+         formatFont = new JMenuItem("Font");
+         formatWordWrap = new JMenuItem("Word Wrap");
+         formatFontSize = new JMenuItem("Font Size");
+         s1 = new JMenuItem("SubMenuItem1");
+         s2 = new JMenuItem("SubMenuItem2");
+  
+         // add ActionListener to menuItems
+         fileNew.addActionListener(te);
+         fileOpen.addActionListener(te);
+         fileSave.addActionListener(te);
+         fileSaveAs.addActionListener(te);
+         s1.addActionListener(te);
+         s2.addActionListener(te);
+  
+         // add menu items to menu
+         fileM.add(fileNew);
+         fileM.add(fileOpen);
+         fileM.add(fileSave);
+         fileM.add(fileSaveAs);
+         editM.add(editUndo);
+         editM.add(editCut);
+         editM.add(editCopy);
+         editM.add(editPaste);
+         formatM.add(formatFont);
+         formatM.add(formatWordWrap);
+         formatM.add(formatFontSize);
+         x1.add(s1);
+         x1.add(s2);
+  
+         // add submenu
+         fileM.add(x1);
+  
+         // add menu to menu bar
+         mb.add(fileM);
+         mb.add(editM);
+         mb.add(formatM);
+  
+         // add menubar to frame
+         f.setJMenuBar(mb);
+  
+         // add label
+         f.add(l);
+  
+         // set the size of the frame
+         f.setSize(500, 500);
+         f.setVisible(true);
      }
-
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+ 
+        // set the label to the menuItem that is selected
+        l.setText(s + " selected");
+    }
+    
 }
