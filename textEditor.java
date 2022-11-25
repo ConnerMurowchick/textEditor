@@ -1,5 +1,7 @@
 import java.awt.*; 
-import javax.swing.*; 
+import javax.swing.*;
+//import javax.swing.colorchooser.SmartGridLayout;
+
 import java.awt.event.*;
 public class textEditor implements ActionListener {
      // menubar
@@ -30,11 +32,12 @@ public class textEditor implements ActionListener {
          // create a frame
          f = new JFrame("Text Editor");
          // create a label
-         l = new JLabel("no task ");
-         jt = new JTextArea("hello",10, 10);
-         jt.setBounds(0,0, 800,800);
-         f.setLayout(new FlowLayout());
+         //l = new JLabel("no task ");
+         jt = new JTextArea();
+         //jt.setBounds(100,0, 800,800);
+         f.setLayout(new BorderLayout());
          f.add(jt);
+         f.pack();
          // create a menubar
          mb = new JMenuBar();
          // create a menu
@@ -86,15 +89,15 @@ public class textEditor implements ActionListener {
          // add menubar to frame
          f.setJMenuBar(mb);
          // add label
-         f.add(l);
+         //f.add(l);
          // set the size of the frame
          f.setSize(500, 500);
          f.setVisible(true);
     }
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
+        //String s = e.getActionCommand();
         // set the label to the menuItem that is selected
-        l.setText(s + " selected");
+        //l.setText(s + " selected");
     }
     
 }
