@@ -109,11 +109,11 @@ public class textEditor implements ActionListener {
         // set the label to the menuItem that is selected
         l.setText(s + " selected");
     }
-    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {
+    public void SaveActionPerformed(ActionEvent e) {
         String name = "New File";
         ArrayList<String> Text = new ArrayList<String>();
-    
-        Text.add(jt.getText());
+        String jtS = jt.getText();
+        Text.add(jtS);
     
         SaveFile(name, Text);
     } 
