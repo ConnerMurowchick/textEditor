@@ -1,4 +1,4 @@
-import java.awt.*; 
+iimport java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
@@ -43,13 +43,8 @@ public class textEditor implements ActionListener {
         // create a frame
         f = new JFrame("Text Editor");
         // create a label
-        l = new JLabel("no task ", 0);
+        l = new JLabel("no task ", 10);
         jt = new JTextArea();
-        f.setLayout(new BorderLayout());
-        // add label
-        f.add(l);
-        f.add(jt);
-        f.pack();
         // create a menubar
         mb = new JMenuBar();
         // create a menu
@@ -76,6 +71,13 @@ public class textEditor implements ActionListener {
         fileOpen.addActionListener(te);
         fileSave.addActionListener(te);
         fileSaveAs.addActionListener(te);
+        editUndo.addActionListener(te);
+        editCut.addActionListener(te);
+        editCopy.addActionListener(te);
+        editPaste.addActionListener(te);
+        formatFont.addActionListener(te);
+        formatWordWrap.addActionListener(te);
+        formatFontSize.addActionListener(te);
         s1.addActionListener(te);
         s2.addActionListener(te);
         // add menu items to menu
@@ -92,6 +94,10 @@ public class textEditor implements ActionListener {
         formatM.add(formatFontSize);
         x1.add(s1);
         x1.add(s2);
+        // add label
+        f.add(l);
+        f.add(jt);
+        f.pack();
         // add submenu
         fileM.add(x1);
         // add menu to menu bar
@@ -103,11 +109,13 @@ public class textEditor implements ActionListener {
         // set the size of the frame
         f.setSize(500, 500);
         f.setVisible(true);
+        //f.setLayout(null);
+        //f.setLayout(new BorderLayout());
     }
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
         // set the label to the menuItem that is selected
-        l.setText(s + " selected");
+        jt.setText(s + " selected");
     }
     public void SaveActionPerformed(ActionEvent e) {
         String name = "New File";
