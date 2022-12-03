@@ -1,4 +1,4 @@
-iimport java.awt.*; 
+import java.awt.*; 
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
@@ -116,8 +116,11 @@ public class textEditor implements ActionListener {
         String s = e.getActionCommand();
         // set the label to the menuItem that is selected
         jt.setText(s + " selected");
+        if(e.getSource() == fileSave) {
+            SaveActionPerformed();
+        }
     }
-    public void SaveActionPerformed(ActionEvent e) {
+    public void SaveActionPerformed() {
         String name = "New File";
         ArrayList<String> Text = new ArrayList<String>();
         String jtS = jt.getText();
