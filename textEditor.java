@@ -113,21 +113,32 @@ public class textEditor implements ActionListener {
         //f.setLayout(new BorderLayout());
     }
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
+        //String s = e.getActionCommand();
         // set the label to the menuItem that is selected
-        jt.setText(s + " selected");
+        //jt.setText(s + " selected");
         if(e.getSource() == fileSave) {
             SaveActionPerformed();
         }
+        if(e.getSource() == fileNew) {
+            SaveActionPerformed();
+            NewActionPerformed();
+        }
     }
+    public void NewActionPerformed() {
+            // reset title to untitled
+            // reset textarea to blank
+            jt.setText("");
+    }
+    
     public void SaveActionPerformed() {
-        String name = "New File";
+        String name = "Untitled";
         ArrayList<String> Text = new ArrayList<String>();
         String jtS = jt.getText();
         Text.add(jtS);
     
         SaveFile(name, Text);
     } 
+    // need to check if file with path already exists, if so make a new one with name + "1";
     public void SaveFile(String name, ArrayList< String> message) {
 
         String path = "C:\\Users\\Conner\\Desktop\\" + name + ".txt";
