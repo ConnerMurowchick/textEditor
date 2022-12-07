@@ -123,13 +123,27 @@ public class textEditor implements ActionListener {
             SaveActionPerformed();
             NewActionPerformed();
         }
+        if(e.getSource() == fileSaveAs) {
+            //THIS JUST CRASHES THE PROGRAM, MAKE IT POP UP A WINDOW
+            // prompt user for file title
+            Scanner in  = new Scanner(System.in);
+            String fileName = in.nextLine();
+            in.close();
+            SaveAsActionPerformed(fileName);
+
+        }
     }
     public void NewActionPerformed() {
             // reset title to untitled
             // reset textarea to blank
             jt.setText("");
     }
-    
+    public void SaveAsActionPerformed(String name) {
+        ArrayList<String> Text = new ArrayList<String>();
+        String jtS = jt.getText();
+        Text.add(jtS);
+        SaveFile(name, Text);
+    } 
     public void SaveActionPerformed() {
         String name = "Untitled";
         ArrayList<String> Text = new ArrayList<String>();
